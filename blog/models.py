@@ -1,25 +1,25 @@
 from django.db import models
 
-# Create your models here.
 class Category(models.Model):
     title = models.CharField(max_length=255)
 
     class Meta:
-        ordering = ('title')
+        ordering = ('title',)
         verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.title
-    
+
+
 class Post(models.Model):
 
     ACTIVATE = 'activate'
     DRAFT = 'draft'
 
-    CHOICES_STATUS = {
+    CHOICES_STATUS = [
         (ACTIVATE, 'activate'),
         (DRAFT, 'draft')
-    }
+    ]
 
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
@@ -31,9 +31,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-    
+
+
 class Comment(models.Model):
-    post = models.ForeignKey(Post, related_name='posts', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.EmailField()
     body = models.TextField()
