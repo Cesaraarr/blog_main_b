@@ -11,7 +11,7 @@ def home(request):
     posts = Post.objects.filter(status=Post.ACTIVATE).order_by('-created_at')
     context = {
 
-        'post': posts
+        'posts': posts
     }
     return render(request, 'blog/home.html', context)
 
@@ -19,6 +19,6 @@ def detail(request, id):
     post = get_object_or_404(Post, id=id, status=Post.ACTIVATE)
 
     context = {
-        'post': post,
+        'postS': post,
     }
     return render(request, 'blog/detail.html', context)
