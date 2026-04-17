@@ -9,16 +9,16 @@ class CommentForm(forms.ModelForm):
         windgets = { 
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'tu nombre'
+                'placeholder': 'Tu nombre'
             }),
             'email': forms.Textarea(attrs={
                 'class': 'form-control',
                 'rows': 1,
-                'placeholder': 'tu email'
+                'placeholder': 'Tu email'
             }),
               'body': forms.Textarea(attrs={
                 'class': 'form-control',
-                'rows': 6,
+                'rows': 5,
                 'placeholder': 'Escribe tu comentario'
             }),
         }
